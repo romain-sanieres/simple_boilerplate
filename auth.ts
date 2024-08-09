@@ -15,8 +15,6 @@ export const {
   session: { strategy: "jwt" }, //Utilisation de JWT pour la gestion des sessions
   providers: [
     Google({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       // Configuration to force account selection
       authorization: {
         params: {
