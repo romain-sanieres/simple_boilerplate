@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
-import Instagram from "next-auth/providers/instagram";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 
 // Import database to avoid multiple requests
@@ -13,9 +12,11 @@ export const {
   signOut,
   auth,
 } = NextAuth({
-  adapter: PrismaAdapter(db), // Utilisation de Prisma comme adaptateur pour la base de données
-  session: { strategy: "jwt" }, //Utilisation de JWT pour la gestion des sessions
+  adapter: PrismaAdapter(db), // Using Prisma as the database adapter
+  session: { strategy: "jwt" }, // Using JWT for session management
   providers: [
+    // Declare your environment variables with the names specified in the documentation to avoid having to enter clientId and client secret in this component
+    // exemple google : https://authjs.dev/getting-started/providers/google
     Google({
       // Configuration to force account selection
       authorization: {
@@ -32,13 +33,6 @@ export const {
         },
       },
     }),
-    Instagram({
-      // Configuration to force account selection
-      authorization: {
-        params: {
-          prompt: "select_account",
-        },
-      },
-    }),
+    // Add more providers
   ],
 });

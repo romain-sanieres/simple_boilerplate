@@ -22,7 +22,6 @@ export default async function Home() {
             </div>
             <form className="w-full flex gap-x-2">
               <OauthButton provider={"google"} />
-              <OauthButton provider={"instagram"} />
               <OauthButton provider={"github"} />
             </form>
           </div>

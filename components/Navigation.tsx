@@ -1,37 +1,47 @@
 import React from "react";
 import Link from "next/link";
-import { MenuIcon, SquareArrowOutUpRight } from "lucide-react";
-import { auth } from "@/auth";
+import { GithubIcon, MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { getUser } from "@/hooks/user";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export const Navigation = async () => {
-  const session = await auth();
+  const session = await getUser();
 
   return (
     <header className="bg-background sticky top-0 z-50 border-b">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          <span className="font-bold text-lg">simple_boilerplate</span>
-        </Link>
+        <div className="flex items-center gap-x-3">
+          <Link href="/" prefetch={false}>
+            <span className="font-bold text-lg">simple_boilerplate</span>
+          </Link>
+          <Link
+            href="https://github.com/romain-sanieres/simple_boilerplate.git"
+            target="_blank"
+            className="font-medium hover:text-primary transition flex items-center gap-x-1"
+            prefetch={false}
+          >
+            <GithubIcon className="size-4" />
+          </Link>
+        </div>
+
         <nav className="hidden md:flex items-center space-x-6">
           {session ? (
             <Link
               href="/dashboard"
-              className="font-medium hover:text-primary transition"
+              className="font-medium hover:text-primary transition flex items-center gap-x-2"
               prefetch={false}
             >
               Dashboard
+              <Avatar className="size-6 mb-1">
+                <AvatarImage src={session.image ?? undefined} />
+                <AvatarFallback>
+                  {session.name?.[0] ?? undefined}
+                </AvatarFallback>
+              </Avatar>
             </Link>
           ) : null}
-          <Link
-            href="#"
-            className="font-medium hover:text-primary transition flex items-center gap-x-1"
-            prefetch={false}
-          >
-            <span>Github</span>
-            <SquareArrowOutUpRight className="size-4 stroke-1 mb-1" />
-          </Link>
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -55,7 +65,8 @@ export const Navigation = async () => {
               ) : null}
               <SheetTrigger asChild>
                 <Link
-                  href="#"
+                  href="https://github.com/romain-sanieres/simple_boilerplate.git"
+                  target="_blank"
                   className="font-medium hover:text-primary transition"
                   prefetch={false}
                 >

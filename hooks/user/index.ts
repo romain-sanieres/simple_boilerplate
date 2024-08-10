@@ -1,16 +1,13 @@
 "use server";
-
 import { auth } from "@/auth";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { db } from "@/db";
 
 export const getUser = async () => {
   const session = await auth();
   if (!session?.user?.email) {
-    throw new Error("User ID is not available.");
+    return;
   }
-  const user = await prisma.user.findUnique({
+  const user = await db.user.findUnique({
     where: {
       email: session.user.email,
     },

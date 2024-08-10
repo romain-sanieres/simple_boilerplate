@@ -7,6 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { LogoutButton } from "@/components/LogoutButton";
+import { ThemeButton } from "@/components/ThemeButton";
 
 export default async function Dashboard() {
   const user = await getUser();
@@ -47,6 +48,12 @@ export default async function Dashboard() {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>theme</TableCell>
+              <TableCell className="text-end">
+                <ThemeButton />
               </TableCell>
             </TableRow>
           </TableBody>
