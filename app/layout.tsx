@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Courier_Prime } from "next/font/google";
+import { Jura } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/Navigation";
 
-const font = Courier_Prime({ subsets: ["latin"], weight: ["400"] });
+const font = Jura({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "simple_boilerplate",
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={font.className}>
         <ThemeProvider
           attribute="class"

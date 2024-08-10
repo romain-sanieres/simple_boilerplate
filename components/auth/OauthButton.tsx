@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { signIn } from "@/auth";
 import Image from "next/image";
+import { login } from "@/actions/authActions";
 
 type PropsType = {
   provider: string;
@@ -13,7 +13,7 @@ export const OauthButton = ({ provider }: PropsType) => {
       className="w-full"
       formAction={async () => {
         "use server";
-        await signIn(provider);
+        await login(provider);
       }}
     >
       <Image

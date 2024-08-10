@@ -1,23 +1,26 @@
 "use client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginFormSchema } from "@/schema";
+import { registerFormSchema } from "@/schema";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { z } from "zod";
+import { AuthButton } from "./AuthButton";
+import { loginWithCreds } from "@/actions/authActions";
 
-export const LoginForm = () => {
-  const form = useForm<z.infer<typeof loginFormSchema>>({
-    resolver: zodResolver(loginFormSchema),
+export const RegisterForm = () => {
+  const form = useForm<z.infer<typeof registerFormSchema>>({
+    resolver: zodResolver(registerFormSchema),
     defaultValues: {
-      email: "", 
-      password: "", 
+      email: "",
+      password: "",
     },
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof loginFormSchema>> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<z.infer<typeof registerFormSchema>> = async (
+    data
+  ) => {
+    const res = await loginWithCreds(data);
   };
 
   return (
@@ -29,7 +32,12 @@ export const LoginForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} type="email" placeholder="email" className="w-full"/>
+                <Input
+                  {...field}
+                  type="email"
+                  placeholder="email"
+                  className="w-full"
+                />
               </FormControl>
             </FormItem>
           )}
@@ -40,12 +48,17 @@ export const LoginForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} type="password" placeholder="password" className="w-full"/>
+                <Input
+                  {...field}
+                  type="password"
+                  placeholder="password"
+                  className="w-full"
+                />
               </FormControl>
             </FormItem>
           )}
         />
-        <Button variant={"secondary"} type="submit" className="w-full">Create account</Button>
+        <AuthButton />
       </form>
     </Form>
   );

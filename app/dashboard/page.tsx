@@ -31,7 +31,7 @@ export default async function Dashboard() {
             <TableRow>
               <TableCell>provider</TableCell>
               <TableCell className="text-end capitalize">
-                {user?.accounts[0].provider}
+                {user?.accounts[0]?.provider}
               </TableCell>
             </TableRow>
             <TableRow>
@@ -41,7 +41,7 @@ export default async function Dashboard() {
             <TableRow>
               <TableCell>created at</TableCell>
               <TableCell className="text-end">
-                {user?.accounts[0].createdAt?.toLocaleString("en-EN", {
+                {user?.accounts[0]?.createdAt?.toLocaleString("en-EN", {
                   day: "numeric",
                   month: "long",
                   year: "numeric",

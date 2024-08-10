@@ -60,4 +60,5 @@
   main {
     @apply flex w-full min-h-dvh -mt-[65px] justify-center items-center px-4
   }
+
 }

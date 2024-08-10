@@ -30,13 +30,13 @@ export const Navigation = async () => {
           {session ? (
             <Link
               href="/dashboard"
-              className="font-medium hover:text-primary transition flex items-center gap-x-2"
+              className="font-medium hover:text-primary transition flex items-center gap-x-2 hover:bg-muted duration-300 rounded-full px-4 py-2"
               prefetch={false}
             >
-              Dashboard
-              <Avatar className="size-6 mb-1">
+              <span>Dashboard</span>
+              <Avatar className="size-6">
                 <AvatarImage src={session.image ?? undefined} />
-                <AvatarFallback>
+                <AvatarFallback className="capitalize">
                   {session.name?.[0] ?? undefined}
                 </AvatarFallback>
               </Avatar>

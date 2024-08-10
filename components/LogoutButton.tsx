@@ -1,5 +1,5 @@
-import { signOut } from "@/auth";
 import { Button } from "./ui/button";
+import { logout } from "@/actions/authActions";
 
 export const LogoutButton = () => {
   return (
@@ -8,7 +8,7 @@ export const LogoutButton = () => {
         variant={"destructive"}
         formAction={async () => {
           "use server";
-          await signOut();
+          await logout();
         }}
       >
         Log out
