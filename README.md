@@ -36,7 +36,7 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/boilerpla.te.git
+   git clone https://github.com/romain-sanieres/simple_boilerplate.git
    cd boilerpla.te
    ```
 
