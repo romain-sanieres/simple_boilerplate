@@ -1,72 +1,71 @@
-# Boilerpla.te
+# simple_boilerplate
 
 ## Description
 
-Boilerpla.te est une application web moderne construite avec Next.js, offrant une authentification sécurisée et une expérience utilisateur fluide. Ce projet sert de point de départ robuste pour développer des applications web complexes avec des fonctionnalités d'authentification intégrées.
+simple_boilerplate is a modern web application built with Next.js, offering secure authentication and a smooth user experience. This project serves as a robust starting point for developing complex web applications with integrated authentication features.
 
-## Fonctionnalités
+## Features
 
-- Authentification utilisateur avec support pour Google, GitHub et Instagram
-- Routes protégées avec middleware d'authentification
+- User authentication with support for Credential, Google, and more
+- Protected routes with authentication middleware
 
-## Librairies Principales
+## Main Libraries
 
-- [React](https://reactjs.org/) - Bibliothèque JavaScript pour la construction d'interfaces utilisateur
-- [Next.js](https://nextjs.org/) - Framework React pour le développement d'applications web
-- [NextAuth.js](https://next-auth.js.org/) - Solution d'authentification pour Next.js
-- [Prisma](https://www.prisma.io/) - ORM pour Node.js et TypeScript
-- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitaire
-- [TypeScript](https://www.typescriptlang.org/) - Superset typé de JavaScript
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces
+- [Next.js](https://nextjs.org/) - React framework for web application development
+- [NextAuth.js](https://next-auth.js.org/) - Authentication solution for Next.js
+- [Prisma](https://www.prisma.io/) - ORM for Node.js and TypeScript
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [TypeScript](https://www.typescriptlang.org/) - Typed superset of JavaScript
 
-## Dépendances Additionnelles
+## Additional Dependencies
 
-- [lucide-react](https://lucide.dev/) - Bibliothèque d'icônes pour React
-- [next-themes](https://github.com/pacocoursey/next-themes) - Gestion des thèmes pour Next.js
-- [shadcn/ui](https://ui.shadcn.com/) - Collection de composants React réutilisables et personnalisables
-- [zod](https://github.com/colinhacks/zod) - Bibliothèque de validation de schéma TypeScript-first
-- [react-hook-form](https://react-hook-form.com/) - Bibliothèque performante pour la gestion des formulaires en React
+- [lucide-react](https://lucide.dev/) - Icon library for React
+- [next-themes](https://github.com/pacocoursey/next-themes) - Theme management for Next.js
+- [shadcn/ui](https://ui.shadcn.com/) - Collection of reusable and customizable React components
+- [zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation library
+- [react-hook-form](https://react-hook-form.com/) - Performant library for form management in React
 
-## Prérequis
+## Prerequisites
 
-- Node.js (version 14 ou supérieure)
-- npm ou yarn
+- Node.js (version 14 or higher)
+- npm or yarn
 
 ## Installation
 
-1. Clonez le dépôt :
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/votre-nom-utilisateur/boilerpla.te.git
+   git clone https://github.com/your-username/boilerpla.te.git
    cd boilerpla.te
    ```
 
-2. Installez les dépendances :
+2. Install dependencies:
 
    ```bash
    npm install
-   # ou
+   # or
    yarn install
    ```
 
-3. Configurez les variables d'environnement :
-   Créez un fichier `.env` à la racine du projet et ajoutez les variables nécessaires pour l'authentification.
+3. Configure environment variables:
+   Create a `.env` file at the root of the project and add the necessary variables for authentication.
 
    - DATABASE_URL
    - AUTH_SECRET
 
-4. Lancez le serveur de développement :
+4. Start the development server:
 
    ```bash
    npm run dev
-   # ou
+   # or
    yarn dev
    ```
 
-5. Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir l'application.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-
-6. Configurez les routes protégées :
-   Assurez-vous d'ajouter vos routes privées dans le fichier `middleware.ts` pour qu'elles soient correctement protégées par l'authentification. Par exemple :
+6. Configure protected routes:
+   Make sure to add your private routes in the `middleware.ts` file to ensure they are properly protected by authentication. For example:
 
    ```typescript
    export const config = {
@@ -74,27 +73,25 @@ Boilerpla.te est une application web moderne construite avec Next.js, offrant un
    }
    ```
 
-   Cela garantira que seuls les utilisateurs authentifiés pourront accéder à ces routes.
+   This will ensure that only authenticated users can access these routes.
 
+## Project Structure
 
+- `app/` - Contains application components and pages
+- `components/` - Reusable components
+- `auth.ts` - Authentication configuration
+- `middleware.ts` - Middleware for route protection
 
-## Structure du Projet
+## Deployment
 
-- `app/` - Contient les composants et les pages de l'application
-- `components/` - Composants réutilisables
-- `auth.ts` - Configuration de l'authentification
-- `middleware.ts` - Middleware pour la protection des routes
+This application can be easily deployed on the Vercel platform:
 
-## Déploiement
-
-Cette application peut être facilement déployée sur la plateforme Vercel :
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/votre-nom-utilisateur/boilerpla.te)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/boilerpla.te)
 
 ## Contribution
 
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou à soumettre une pull request.
+Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-## Licence
+## License
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.

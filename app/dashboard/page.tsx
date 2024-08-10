@@ -1,22 +1,65 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { auth, signOut } from "@/auth";
-export default async function Dashboard() {
-  const session = await auth();
-  return (
-    <div className="flex gap-x-2">
-      <p className="text-4xl underline">{session?.user?.email}</p>
+import { getUser } from "@/hooks/user";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableRow,
+} from "@/components/ui/table";
+import { LogoutButton } from "@/components/LogoutButton";
 
-      <form className="w-full space-y-2">
-        <Button
-          formAction={async () => {
-            "use server";
-            await signOut();
-          }}
-        >
-          Log out
-        </Button>
-      </form>
+export default async function Dashboard() {
+  const user = await getUser();
+  return (
+    <div className="flex w-full justify-center py-5">
+      <div className="w-full container flex">
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell>name</TableCell>
+              <TableCell className="text-end">{user?.name}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>email</TableCell>
+              <TableCell className="text-end">{user?.email}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>role</TableCell>
+              <TableCell className="text-end">{user?.role}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>provider</TableCell>
+              <TableCell className="text-end capitalize">
+                {user?.accounts[0].provider}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>id</TableCell>
+              <TableCell className="text-end">{user?.id}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>created at</TableCell>
+              <TableCell className="text-end">
+                {user?.accounts[0].createdAt?.toLocaleString("en-EN", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </TableCell>
+            </TableRow>
+          </TableBody>
+          <TableFooter className="bg-background">
+            <TableRow className="hover:bg-transparent">
+              <TableCell></TableCell>
+              <TableCell className="text-right">
+                <LogoutButton />
+              </TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </div>
     </div>
   );
 }

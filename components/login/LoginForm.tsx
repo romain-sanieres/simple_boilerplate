@@ -2,9 +2,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "@/schema";
-import { Form, FormControl, FormField, FormItem } from "./ui/form";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { z } from "zod";
 
 export const LoginForm = () => {
@@ -40,12 +40,12 @@ export const LoginForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} type="password" placeholder="mot de passe" className="w-full"/>
+                <Input {...field} type="password" placeholder="password" className="w-full"/>
               </FormControl>
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">Créer un compte</Button>
+        <Button variant={"secondary"} type="submit" className="w-full">Create account</Button>
       </form>
     </Form>
   );
