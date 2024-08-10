@@ -86,7 +86,7 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
 
 This application can be easily deployed on the Vercel platform:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/boilerpla.te)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/romain-sanieres/simple_boilerplate.git)
 
 ## Contribution
 
