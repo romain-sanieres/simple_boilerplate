@@ -46,23 +46,30 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
    pnpm install
    # or
    yarn install
+
    ```
 
-3. Configure environment variables:
+3. The default authentication database for Prisma is configured for PostgreSQL. For other Prisma schemas, or if you are using a different type of database, you can check the 
+   Schema section here: https://authjs.dev/getting-started/adapters/prisma
+
+4. Configure environment variables:
    Create a `.env` file at the root of the project and add the necessary variables for authentication.
+
+   Connect your database with url
 
    - DATABASE_URL
 
-   You can use `npx auth secret` to create an auth secret 
+   You can use `npx auth secret` to create an auth secret
+
    - AUTH_SECRET
 
-4. Generate Prisma:
+5. Generate Prisma:
 
    ```bash
    npm prisma generate
    ```
 
-5. Start the development server:
+6. Start the development server:
 
    ```bash
    pnpm dev
@@ -70,15 +77,15 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
    yarn dev
    ```
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+7. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-7. Configure protected routes:
+8. Configure protected routes:
    Make sure to add your private routes in the `middleware.ts` file to ensure they are properly protected by authentication. For example:
 
    ```typescript
    export const config = {
-     matcher: ["/dashboard", "/profile", "/api/private"]
-   }
+     matcher: ["/dashboard", "/profile", "/api/private"],
+   };
    ```
 
    This will ensure that only authenticated users can access these routes.
