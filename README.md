@@ -6,7 +6,7 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
 
 ## Features
 
-- User authentication with support for Credential, Google, and more
+- User authentication with support for Credentials, Google, and more
 - Protected routes with authentication middleware
 
 ## Main Libraries
@@ -29,7 +29,7 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
 ## Prerequisites
 
 - Node.js (version 14 or higher)
-- npm or yarn
+- npm, pnpm or yarn
 
 ## Installation
 
@@ -43,7 +43,7 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
 2. Install dependencies:
 
    ```bash
-   npm install
+   pnpm install
    # or
    yarn install
    ```
@@ -52,6 +52,8 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
    Create a `.env` file at the root of the project and add the necessary variables for authentication.
 
    - DATABASE_URL
+
+   You can use `npx auth secret` to create an auth secret 
    - AUTH_SECRET
 
 4. Generate Prisma:
@@ -63,7 +65,7 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
 5. Start the development server:
 
    ```bash
-   npm run dev
+   pnpm dev
    # or
    yarn dev
    ```
