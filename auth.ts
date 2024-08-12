@@ -2,11 +2,10 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import bcrypt, { compare, compareSync } from "bcryptjs";
+import { compareSync } from "bcryptjs";
 import { db } from "./db";
 import Credentials from "next-auth/providers/credentials";
 import { hashPassword } from "./utils/hash";
-import { signInSchema } from "./schema";
 
 export const {
   handlers: { GET, POST },

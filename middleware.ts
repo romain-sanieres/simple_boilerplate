@@ -8,6 +8,8 @@ const protectedRoutes = ["/dashboard"];
 export default async function middleware(request: NextRequest) {
   const session = await auth();
 
+  console.log(session)
+
   // Check if the current route is protected
   const isProtected = protectedRoutes.some((route) =>
     request.nextUrl.pathname.startsWith(route)
@@ -18,7 +20,6 @@ export default async function middleware(request: NextRequest) {
     const abosoluteURL = new URL("/", request.nextUrl.origin);
     return NextResponse.redirect(abosoluteURL.toString());
   }
-
 
   // If authentication passes or the route is not protected, continue to the next middleware
   return NextResponse.next();

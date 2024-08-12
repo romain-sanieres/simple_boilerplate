@@ -37,7 +37,7 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
 
    ```bash
    git clone https://github.com/romain-sanieres/simple_boilerplate.git
-   cd boilerpla.te
+   cd simple_boilerplate
    ```
 
 2. Install dependencies:
@@ -54,7 +54,13 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
    - DATABASE_URL
    - AUTH_SECRET
 
-4. Start the development server:
+4. Generate Prisma:
+
+   ```bash
+   npm prisma generate
+   ```
+
+5. Start the development server:
 
    ```bash
    npm run dev
@@ -62,9 +68,9 @@ simple_boilerplate is a modern web application built with Next.js, offering secu
    yarn dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-6. Configure protected routes:
+7. Configure protected routes:
    Make sure to add your private routes in the `middleware.ts` file to ensure they are properly protected by authentication. For example:
 
    ```typescript

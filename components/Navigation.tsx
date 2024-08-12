@@ -25,22 +25,24 @@ export const Navigation = async () => {
             <GithubIcon className="size-4" />
           </Link>
         </div>
-
         <nav className="hidden md:flex items-center space-x-6">
           {session ? (
-            <Link
-              href="/dashboard"
-              className="font-medium hover:text-primary transition flex items-center gap-x-2 hover:bg-muted duration-300 rounded-full px-4 py-2"
-              prefetch={false}
-            >
-              <span>Dashboard</span>
-              <Avatar className="size-6">
-                <AvatarImage src={session.image ?? undefined} />
-                <AvatarFallback className="capitalize">
-                  {session.name?.[0] ?? undefined}
-                </AvatarFallback>
-              </Avatar>
-            </Link>
+            <>
+              {session.role === "ADMIN" ? <Link href={"/"} className="text-red-500">Admin</Link> : null}
+              <Link
+                href="/dashboard"
+                className="font-medium hover:text-primary transition flex items-center gap-x-2 hover:bg-muted duration-300 rounded-full px-4 py-2"
+                prefetch={false}
+              >
+                <span>Dashboard</span>
+                <Avatar className="size-6">
+                  <AvatarImage src={session.image ?? undefined} />
+                  <AvatarFallback className="capitalize">
+                    {session.name?.[0] ?? undefined}
+                  </AvatarFallback>
+                </Avatar>
+              </Link>
+            </>
           ) : null}
         </nav>
         <Sheet>
