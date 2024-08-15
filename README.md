@@ -2,7 +2,7 @@
 
 ## Description
 
-simple_boilerplate is a modern web application built with Next.js, offering secure authentication and a smooth user experience. This project serves as a robust foundation for developing complex web applications with integrated authentication features. This boilerplate is still in development, but the main branch works perfectly. Several other features will be added soon.
+simple_boilerplate is a modern web application built with Next.js, offering secure authentication and a smooth user experience. This project serves as a robust foundation for developing complex web applications with integrated authentication features. This boilerplate is still in development, but the main branch works perfectly. Several other features will be added soon (stat manager). 
 
 ## Features
 

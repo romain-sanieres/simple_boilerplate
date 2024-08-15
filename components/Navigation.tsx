@@ -3,7 +3,7 @@ import Link from "next/link";
 import { GithubIcon, MenuIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { getUser } from "@/hooks/user";
+import { getUser } from "@/actions/user";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export const Navigation = async () => {

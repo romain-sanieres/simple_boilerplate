@@ -1,4 +1,4 @@
-import { getUser } from "@/hooks/user";
+import { getUser } from "@/actions/user";
 import {
   Table,
   TableBody,

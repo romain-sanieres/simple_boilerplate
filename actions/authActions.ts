@@ -31,7 +31,6 @@ export const logout = async () => {
 
 export const loginWithCreds = async (formData: RegisterFormType) => {
 
-
   const existingUser = await getUserByEmail(formData.email as string);
 
   try {

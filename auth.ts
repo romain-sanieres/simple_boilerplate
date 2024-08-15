@@ -34,23 +34,31 @@ export const {
         },
       },
     }),
+    // This is the configuration for the Credentials provider, which allows users to log in with their email and password.
     Credentials({
+      // The name of the provider, which is displayed on the login page.
       name: "Credentials",
+      // The credentials that are required for this provider.
       credentials: {
         email: {},
         password: {},
       },
 
+      // This function is called when a user attempts to log in with their email and password.
       authorize: async (credentials) => {
+        // Get the email from the credentials.
         const email = credentials.email as string;
+        // Hash the password from the credentials.
         const hash = hashPassword(credentials.password);
 
+        // Try to find a user with the given email.
         let user: any = await db.user.findUnique({
           where: {
             email,
           },
         });
 
+        // If no user is found, create a new one.
         if (!user) {
           user = await db.user.create({
             data: {
@@ -58,6 +66,7 @@ export const {
               email,
               password: hash,
               createdAt: new Date(),
+              // Create a new account for the user.
               accounts: {
                 create: {
                   type: "credentials",
@@ -68,14 +77,17 @@ export const {
             },
           });
         } else {
+          // If a user is found, check if the provided password is valid.
           const isPasswordValid = compareSync(
             credentials.password as string,
             user.password
           );
+          // If the password is not valid, return null.
           if (!isPasswordValid) {
             return null;
           }
         }
+        // Return the user.
         return user;
       },
     }),

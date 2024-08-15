@@ -7,8 +7,10 @@ import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { AuthButton } from "./AuthButton";
 import { loginWithCreds } from "@/actions/authActions";
+import { useState } from "react";
 
 export const RegisterForm = () => {
+  const [message, setMessage] = useState("");
   const form = useForm<z.infer<typeof registerFormSchema>>({
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
@@ -21,45 +23,51 @@ export const RegisterForm = () => {
     data
   ) => {
     const res = await loginWithCreds(data);
+    if (res) setMessage(res.error);
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  {...field}
-                  type="email"
-                  placeholder="email"
-                  className="w-full"
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  {...field}
-                  type="password"
-                  placeholder="password"
-                  className="w-full"
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <AuthButton />
-      </form>
-    </Form>
+    <>
+      {" "}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="email"
+                    placeholder="email"
+                    className="w-full"
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="password"
+                    placeholder="password"
+                    className="w-full"
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <p className="text-red-500 text-xs h-4">{message}</p>
+
+          <AuthButton />
+        </form>
+      </Form>
+    </>
   );
 };
